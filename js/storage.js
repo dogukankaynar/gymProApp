@@ -27,8 +27,9 @@ const calculatePeriod = () => {
   return selectValue;
 };
 
-//üye kayıt fonksiyonu
-const memberRegistration = () => {
+
+//=======>PERSON OBJESİ OLUŞTURUR<======
+const personObject = () => {
   let registrationDate = new Date(); //kayıt tarihi
   let id = registrationDate.getTime(); //üye id
 
@@ -43,17 +44,21 @@ const memberRegistration = () => {
   );
 
   //üye objesi
-  person = {
+  return (person = {
     id: id,
     name: personName.value,
     surname: personSurname.value,
     kayıtTarihi: registrationDate,
     sonGün: endDate,
-  };
+  });
+};
 
+//üye kayıt fonksiyonu
+const memberRegistration = () => {
+  let person = personObject();
   addStorage(person);
 
   console.log("storage js çalıstı");
 };
 
-export  {memberRegistration}
+export { memberRegistration };
