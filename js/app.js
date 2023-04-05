@@ -1,10 +1,11 @@
-import {memberRegistration} from "./storage.js"
+import { memberRegistration } from "./storage.js";
 let subButton = document.getElementById("subButton");
 
 let data = JSON.parse(localStorage.getItem("myData"));
 
-data.map(data=>{console.log(data)})
-
+data.map((data) => {
+  console.log(data);
+});
 
 // let time = new Date(data[0].sonGün.getTime())
 /*   ==========>datadan gelen date' ye göre kalan günleri hesaplar<========
@@ -21,7 +22,7 @@ let now = new Date()
 }*/
 
 function eventListener() {
-  subButton.addEventListener("click", memberRegistration);//üye kayıtını başlatır.
+  subButton.addEventListener("click", memberRegistration); //üye kayıtını başlatır.
 }
 
 eventListener();

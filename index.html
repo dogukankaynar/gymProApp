@@ -4,22 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style/style.css">
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-        <input type="text" id="personName" placeholder="Üye adı..">    
-        <input type="text" id="personSurname" placeholder=" Üye soyadı..">
-        <select name="" id="period">
-            <option value="1">Aylık</option>
-            <option value="3">3 Aylık</option>
-            <option value="6">6 Aylık</option>
-            <option value="12">1 Yıllık</option>
-          </select>
-          <button id="subButton">Ekle</button>
+        <div class="sidebar">
+            <div class="sidebar-banner">
+                <img class="sidebar-logo" src="./style/icon/weight.png" alt="">
+                <label class="sidebar-title" for="">GYMPRO</label>
+            </div>
+                <hr>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/home.png" alt="">
+                <label class="sidebar-text" for="">Home</label>
+            </div>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/loupe.png" alt="">
+                <label class="sidebar-text" for="">Search</label>
+            </div>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/seo-report.png" alt="">
+                <label class="sidebar-text" for="">Chasing</label>
+            </div>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/file-backup.png" alt="">
+                <label class="sidebar-text" for="">Docs</label>
+            </div>
+            <hr>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/box.png" alt="">
+                <label class="sidebar-text" for="">Product</label>
+            </div>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/preferences.png" alt="">
+                <label class="sidebar-text" for="">Setting</label>
+            </div>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/message.png" alt="">
+                <label class="sidebar-text" for="">Message</label>
+            </div>
+            <hr>
+            <div class="sidebar-menu">
+                <img class="sidebar-img" src="./style/icon/user.png" alt="">
+                <label class="sidebar-text" for="">Account</label>
+            </div>
+        </div>
+        <div class="main">
+            <input type="text" id="personName" placeholder="Üye adı..">    
+            <input type="text" id="personSurname" placeholder=" Üye soyadı..">
+            <select name="" id="period">
+                <option value="1">Aylık</option>
+                <option value="3">3 Aylık</option>
+                <option value="6">6 Aylık</option>
+                <option value="12">1 Yıllık</option>
+              </select>
+              <button id="subButton">Ekle</button>
+        </div>
     </div>
-
 
     <script type="module" src="./js/storage.js"></script>
     <script type="module" src="./js/app.js"></script>

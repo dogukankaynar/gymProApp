@@ -1,6 +1,6 @@
 let personName = document.getElementById("personName");
 let personSurname = document.getElementById("personSurname");
-let person = [];
+let person = []
 
 const startStroge = () => {
   const data = localStorage.getItem("myData");
@@ -26,7 +26,6 @@ const calculatePeriod = () => {
   );
   return selectValue;
 };
-
 
 //=======>PERSON OBJESİ OLUŞTURUR<======
 const personObject = () => {
