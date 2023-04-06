@@ -1,7 +1,9 @@
 let personName = document.getElementById("personName");
 let personSurname = document.getElementById("personSurname");
-let person = []
+let ageInput = document.getElementById("ageInput");
+let personEmail = document.getElementById("personEmail")
 
+let person = [];
 const startStroge = () => {
   const data = localStorage.getItem("myData");
   if (!data) {
@@ -31,7 +33,7 @@ const calculatePeriod = () => {
 const personObject = () => {
   let registrationDate = new Date(); //kayıt tarihi
   let id = registrationDate.getTime(); //üye id
-
+  let age = parseInt(ageInput.value);
   let value = calculatePeriod(); //üyenin aylık süresi
   console.log(value);
 
@@ -45,8 +47,9 @@ const personObject = () => {
   //üye objesi
   return (person = {
     id: id,
-    name: personName.value,
-    surname: personSurname.value,
+    name: `${personName.value} ${personSurname.value}`,
+    age: age,
+    email:personEmail.value,
     kayıtTarihi: registrationDate,
     sonGün: endDate,
   });
@@ -56,7 +59,7 @@ const personObject = () => {
 const memberRegistration = () => {
   let person = personObject();
   addStorage(person);
-
+  window.location.href="index.html"
   console.log("storage js çalıstı");
 };
 

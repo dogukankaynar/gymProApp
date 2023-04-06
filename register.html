@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register-page">
+            <h1>New Member Registration</h1>
+            <div class="flex-row">
+                <div class="flex-col">
+                    <label class="register-label" for="">Name</label>
+                    <input class="register-input" id="personName" type="text" placeholder="Enter person name">
+                </div>
+                <div class="flex-col">
+                    <label class="register-label" for="">Surname</label>
+                    <input class="register-input" id="personSurname" type="text" placeholder="Enter person surname">
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-col">
+                    <label class="register-label" for="">Age</label>
+                    <input class="register-input" id="ageInput" type="text" placeholder="Person Age">
+                </div>
+                <div class="flex-col">
+                    <label class="register-label" for="">Period</label>
+                    <select class="select" name="" id="period">
+                        <option value="1">Aylık</option>
+                        <option value="3">3 Aylık</option>
+                        <option value="6">6 Aylık</option>
+                        <option value="12">1 Yıllık</option>
+                    </select>
+                </div>
+         
+            </div>
+            <div class="flex-col">
+                <label class="register-label" for="">EMAIL</label>
+                <input class="register-email" type="email" placeholder="Enter person Email" id="personEmail">
+            </div>
+            <div>
+                <button class="register-button" id="subButton">SUBMIT</button>
+            </div>
+        </div>
+        <div class="register-img">
+            <img src="./style/icon/deadlift.png" alt="">
+        </div>
+    </div>
+
+    
+    <script type="module" src="./js/storage.js"></script>
+    <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
