@@ -12,6 +12,7 @@
     height: 100vh;
     background-color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -79,7 +80,7 @@ hr{
     justify-content: center;
     flex-direction: row;
     gap: 30px;
-    
+
 }
 .register-page{
     padding: 40px;
@@ -147,4 +148,40 @@ hr{
     border-radius: 5px;
     box-shadow: 10px 4px 10px rgba(0, 0, 0, 0.2);
     /* height: 439px; */
+}
+.list-content{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.list-header{
+    background-color: black;
+    color: white;
+    display: flex;
+    border-radius: 5px 5px 0px 0px;
+}
+.list-header-item{
+    min-width: 200px;
+    max-width: 200px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+.list-content-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border:1px solid #EEEEEE;
+}
+.list-content-item:nth-child(2n){
+    background-color: #EEEEEE;
+}
+.list-item{
+    min-width: 200px;
+    max-width: 200px;
+    padding: 20px;
+    text-align: center;
 }

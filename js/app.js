@@ -1,11 +1,15 @@
-import { memberRegistration } from "./storage.js";
-let subButton = document.getElementById("subButton");
+import {getDataUi} from "./ui.js"
+let regirsterButton = document.getElementById('regirsterButton')
 
-let data = JSON.parse(localStorage.getItem("myData"));
 
-data.map((data) => {
-  console.log(data);
-});
+const startStroge = () => {
+  const data = localStorage.getItem("myData");
+  if (!data) {
+    localStorage.setItem("myData", JSON.stringify([]));
+  }
+  console.log("çalıstım");
+};
+ startStroge();
 
 // let time = new Date(data[0].sonGün.getTime())
 /*   ==========>datadan gelen date' ye göre kalan günleri hesaplar<========
@@ -20,9 +24,14 @@ let now = new Date()
  let  remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
   console.log(data[i].name+" Üyesinin Kalan Günü: "+remainingDays)
 }*/
-
-function eventListener() {
-  subButton.addEventListener("click", memberRegistration); //üye kayıtını başlatır.
+const registerPageHref = ()=>{
+  window.location.href="register.html"
 }
 
-eventListener();
+function eventListener() {
+   window.onload= getDataUi;
+  regirsterButton.addEventListener('click',registerPageHref)
+ 
+}
+
+ eventListener();

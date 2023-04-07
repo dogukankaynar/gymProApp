@@ -2,16 +2,10 @@ let personName = document.getElementById("personName");
 let personSurname = document.getElementById("personSurname");
 let ageInput = document.getElementById("ageInput");
 let personEmail = document.getElementById("personEmail")
+let subButton = document.getElementById("subButton");
 
 let person = [];
-const startStroge = () => {
-  const data = localStorage.getItem("myData");
-  if (!data) {
-    localStorage.setItem("myData", JSON.stringify([]));
-  }
-  console.log("çalıstım");
-};
-startStroge();
+
 
 // localStorage' e üye Ekler
 const addStorage = (person) => {
@@ -57,10 +51,14 @@ const personObject = () => {
 
 //üye kayıt fonksiyonu
 const memberRegistration = () => {
-  let person = personObject();
-  addStorage(person);
-  window.location.href="index.html"
-  console.log("storage js çalıstı");
-};
+  if(!personName.value || !personSurname.value || !ageInput.value || !personEmail.value){//inputlar dolumu kontrol
+    alert("Tüm Alanları Doldurduğunuzdan Emin Olun");
+  }
+  else{
+    let person = personObject();
+    addStorage(person);
+    window.location.href="index.html"
+  }
 
-export { memberRegistration };
+};
+subButton.addEventListener('click',memberRegistration)
