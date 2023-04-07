@@ -46,6 +46,7 @@ const personObject = () => {
     email:personEmail.value,
     kayıtTarihi: registrationDate,
     sonGün: endDate,
+    uyelıkSuresı:value,
   });
 };
 
