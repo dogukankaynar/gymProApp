@@ -1,47 +1,52 @@
+import { getAllMembers, deleteMember } from "./personService.js";
+
 let listContent = document.getElementById("listContent");
-let data = JSON.parse(localStorage.getItem("myData"));
 
-
-const remainingDays = ()=>{//kalan günü hesaplar
-  let remainingDay=[];
-   data.map((item)=>{
-     let time = new Date(item.sonGün)
-     let newTime=time.getTime()
-     let now = new Date()
-     let remainingTime =newTime - now.getTime()
-     remainingDay.push(Math.floor(remainingTime / (1000 * 60 * 60 * 24)));
-  })
-  return remainingDay
-}
-
-const getDataUi = () => {//table functioın
-  let remainingDay = remainingDays();
-  data.map((item,index) => {
-    let time = new Date(item.kayıtTarihi);
-    let newTime = `${time.getDate()}/${time.getMonth() + 1}/${time.getFullYear()}`;
-    listContent.innerHTML += `
-        <div class="list-content-item">
-         <div class="list-item">${item.name}</div>
-         <div class="list-item">${item.uyelıkSuresı} Aylık</div>
-         <div class="list-item">${newTime}</div>
-         <div class="list-item">${remainingDay[index]}</div>
-         </div>
-        `;
-  });
+const remainingDaysByMember = (member) => {
+  //kalan günü hesaplar
+  let remainingDay = [];
+  let time = new Date(member.endDate);
+  let newTime = time.getTime();
+  let now = new Date();
+  let remainingTime = newTime - now.getTime();
+  remainingDay.push(Math.floor(remainingTime / (1000 * 60 * 60 * 24)));
+  return remainingDay;
 };
 
+const getDataUi = async () => {
+  //table functioın
+  const members = await getAllMembers();
+  members.map((member) => {
+    const remainingDay = remainingDaysByMember(member);
+    let time = new Date(member.registerDate);
+    let newTime = `${time.getDate()}/${
+      time.getMonth() + 1
+    }/${time.getFullYear()}`;
 
-// let time = new Date(data[0].sonGün.getTime())
-/*   ==========>datadan gelen date' ye göre kalan günleri hesaplar<========
-for(let i in data){
- let time = new Date(data[i].sonGün);
- let newTime = time.getTime();
- console.log(time);
- console.log("yeni tarih", newTime);
+    // let deleteButton = document.createElement("button");
+    // deleteButton.addEventListener("click", () => console.log("sa"));
+    // deleteButton.innerText = "delete";
+    // deleteButton.id = member.id + "delete";
 
-let now = new Date()
- let remainingTime = newTime - now.getTime();
- let  remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-  console.log(data[i].name+" Üyesinin Kalan Günü: "+remainingDays)
-}*/
+    listContent.innerHTML += `
+    <div class="list-content-item" id="${member.id}">
+    <a href="register.html?id=${member.id}"> <div class="editButton"><img class="edit-icon" src="./style/icon/edit.png" alt=""></div></a>
+    <div class="list-item">${member.name}</div>
+    <div class="list-item">${member.period} Aylık</div>
+    <div class="list-item">${newTime}</div>
+    <div class="list-item">${remainingDay}</div>
+   <button class="button" name="delete-button" id="${member.id}" >delete</button>
+    </div>
+    `;
+    // console.log('deleteButton', deleteButton)
+  });
+  const buttons = document.querySelectorAll('[name="delete-button"]');
+  buttons.forEach((button) => {
+    button.addEventListener("click", async () => await deleteMember(button.id));
+  });
+  // document
+  //   .getElementById("deleteButton")
+  //   .addEventListener("click", () => deleteMember(member.id));
+};
+
 export { getDataUi };

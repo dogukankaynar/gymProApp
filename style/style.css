@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+      'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 *{
     margin: 0;
     padding: 0;
@@ -185,3 +192,14 @@ hr{
     padding: 20px;
     text-align: center;
 }
+.list-content-item:hover .editButton .edit-icon{
+    display: block;
+}
+.edit-icon{
+    display: none;
+    width: 20px;
+    position: absolute;
+    z-index: 1;
+    margin-left:10px;
+    margin-top:-10px;
+}  

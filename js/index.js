@@ -1,19 +1,13 @@
+import { addMember ,updateMember} from "./personService.js";
+import { isEdit ,getIdFromQuery} from "./edit.js";
 let personName = document.getElementById("personName");
 let personSurname = document.getElementById("personSurname");
 let ageInput = document.getElementById("ageInput");
-let personEmail = document.getElementById("personEmail")
+let personEmail = document.getElementById("personEmail");
 let subButton = document.getElementById("subButton");
 
 let person = [];
-
-
-// localStorage' e üye Ekler
-const addStorage = (person) => {
-  const data = JSON.parse(localStorage.getItem("myData"));
-  data.push(person);
-  localStorage.setItem("myData", JSON.stringify(data));
-};
-
+console.log("isEdit", isEdit);
 //üyelik ay süresini hesaplar
 const calculatePeriod = () => {
   let selectPeriod = document.getElementById("period");
@@ -26,10 +20,8 @@ const calculatePeriod = () => {
 //=======>PERSON OBJESİ OLUŞTURUR<======
 const personObject = () => {
   let registrationDate = new Date(); //kayıt tarihi
-  let id = registrationDate.getTime(); //üye id
   let age = parseInt(ageInput.value);
   let value = calculatePeriod(); //üyenin aylık süresi
-  console.log(value);
 
   //üyelik bitiş tarihi
   let endDate = new Date(
@@ -40,26 +32,34 @@ const personObject = () => {
 
   //üye objesi
   return (person = {
-    id: id,
-    name: `${personName.value} ${personSurname.value}`,
+    name: personName.value,
+    surname: personSurname.value,
     age: age,
-    email:personEmail.value,
-    kayıtTarihi: registrationDate,
-    sonGün: endDate,
-    uyelıkSuresı:value,
+    email: personEmail.value,
+    registerDate: registrationDate,
+    endDate: endDate,
+    period: value,
   });
 };
 
 //üye kayıt fonksiyonu
-const memberRegistration = () => {
-  if(!personName.value || !personSurname.value || !ageInput.value || !personEmail.value){//inputlar dolumu kontrol
+const memberRegistration = async () => {
+  if (
+    !personName.value ||
+    !personSurname.value ||
+    !ageInput.value ||
+    !personEmail.value
+  ) {
+    //inputlar dolumu kontrol
     alert("Tüm Alanları Doldurduğunuzdan Emin Olun");
-  }
-  else{
+  } else {
     let person = personObject();
-    addStorage(person);
-    window.location.href="index.html"
+    if (isEdit) {
+      await updateMember({...person,id:getIdFromQuery()});
+    } else {
+      await addMember(person);
+    }
+     window.location.href = "index.html";
   }
-
 };
-subButton.addEventListener('click',memberRegistration)
+subButton.addEventListener("click", memberRegistration);

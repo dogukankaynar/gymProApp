@@ -2,6 +2,7 @@ import {getDataUi} from "./ui.js"
 let regirsterButton = document.getElementById('regirsterButton')
 
 
+
 const startStroge = () => {
   const data = localStorage.getItem("myData");
   if (!data) {
